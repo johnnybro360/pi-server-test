@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "./api";
+import Form from "./Form";
 
 type User = {
   id: number;
   name: string;
-}
+};
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
 
-  useEffect(() => {
+  const fetchUsers = () => {
     getUsers().then(setUsers);
+  };
+  
+  useEffect(() => {
+    fetchUsers();
   }, []);
 
   return (
@@ -19,7 +24,7 @@ function App() {
         <h1 className="text-3xl font-bold text-gray-900 text-center mb-8">
           Pi App
         </h1>
-
+        <Form onUserCreated={fetchUsers} />
         <ul className="space-y-3">
           {users.map((user) => (
             <li
