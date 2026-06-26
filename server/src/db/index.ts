@@ -5,6 +5,11 @@ import "dotenv/config";
 const isProd = process.env.NODE_ENV === "production";
 const dbPath = process.env.DB_FILE_NAME;
 
+console.log(process.env.NODE_ENV);
+console.log(dbPath);
+console.log(process.env.DB_FILE_NAME);
+
+
 if (!dbPath) throw new Error("DB_FILE_NAME is missing");
 
 const sqlite = new Database(dbPath);
