@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "./api";
 
+type User = {
+  id: number;
+  name: string;
+}
+
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     getUsers().then(setUsers);
@@ -18,11 +23,11 @@ function App() {
         <ul className="space-y-3">
           {users.map((user) => (
             <li
-              key={user.id}
+              key={user?.id}
               className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition p-4"
             >
               <h2 className="text-lg font-semibold text-gray-800">
-                {user.name}
+                {user?.name}
               </h2>
             </li>
           ))}

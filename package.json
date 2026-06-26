@@ -14,7 +14,7 @@
     "build": "npm run build:server && npm run build:client",
     "build:client": "npm --prefix client run build",
     "build:server": "tsc -p server/tsconfig.json",
-    "start": "node server/dist/server.js",
+    "start": "node server/dist/index.js",
     "deploy:pi": "git add . && git commit -m 'deploy' && git push && ssh pi@192.168.68.73 'cd ~/my-app && ./deploy.sh'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
